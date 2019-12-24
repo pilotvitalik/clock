@@ -14,7 +14,14 @@ body{
   text-shadow: 0 5px 5px #000;
 }
 .clock{
+  display: flex;
+  flex-flow: row nowrap;
   font-size: @clock;
+}
+.clock .hh,
+.clock .mm,
+.clock .ss{
+  width: 70px;
 }
 .date{
   font-size: @date;
