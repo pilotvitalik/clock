@@ -11,6 +11,9 @@
 			li.className = 'choice-timeZone-list-item';
 			p.className = 'choice-timeZone-list-item__name';
 			pCity.className = 'choice-timeZone-list-item__name';
+			li.setAttribute('value',`${item.timeZone}`);
+			p.setAttribute('value',`${item.timeZone}`);
+			pCity.setAttribute('value',`${item.timeZone}`);
 			p.append(item.showZone);
 			pCity.append(item.cities.join(' , '));
 			li.append(p);
@@ -22,4 +25,4 @@
 
 	setTimeout(() => {
 	  list.append(addList());
-	}, 2)
+	}, 1)

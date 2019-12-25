@@ -17,7 +17,7 @@ const requestTimeZone = () => {
       id: +item.slice(0, 3),
   		'zone': item,
       'showZone': `UTC${item}`,
-  		'timeZone': `Etc/GMT+${+item.slice(0, 3)}`,
+  		'timeZone': `Etc/GMT-${+item.slice(0, 3)}`,
   		'cities': [],
   	}
   })
@@ -26,7 +26,7 @@ const requestTimeZone = () => {
       'id': item.id,
   	  'zone': item.zone,
       'showZone': `UTC${item.zone}`,
-  	  'timeZone': item.timeZone.replace('+-','-'),
+  	  'timeZone': item.timeZone.replace('--','+'),
   	  'cities': item.cities,
   	}
   })
@@ -54,7 +54,3 @@ setTimeout(() => {
   addCities();
 }, 1)
 
-
-// setTimeout(() => {
-  
-// },2)

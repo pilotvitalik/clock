@@ -1,5 +1,6 @@
 'use strict'
 import { timeZone } from './requestData.js';
+//import { date } from './transit.js';
 
 let hours = document.querySelector('.hh'); // show hours
 let minutes = document.querySelector('.mm'); // show minutes
@@ -13,10 +14,15 @@ let data; // common from api
 export let ul = document.querySelector('.choice-timeZone-select');
 let li = ul.querySelector('li');
 let changeTime = false;
+let iscreateTitleList = false;
+let requestURL = '';
 
 // load api
-const requestData = () => {
-  let requestURL = 'http://worldtimeapi.org/api/ip';
+export const requestData = (date) => {
+  if (requestURL !== date) {
+    changeTime = true
+  }
+  requestURL = date;  
   let request = new XMLHttpRequest();
 
   request.open('GET', requestURL);
@@ -27,17 +33,17 @@ const requestData = () => {
   request.onload = function() {
     data = request.response;
     time(data);
-    if (changeTime === false) {
+    if (changeTime === true) {
       pasteData(data);
     } else {
       return;
     }
-    changeTime = true;
+    changeTime = false;
   }
 }
 
 // initial load data
-requestData();
+requestData('http://worldtimeapi.org/api/ip');
 
 // count between synchronizations
 function ti() {
@@ -73,7 +79,7 @@ function time(data) {
 // main loop
 let loop = setTimeout(function tick() {
   if ((Number(ss) + 1) === 60) {
-    requestData();
+    requestData(requestURL);
   }
   if ((Number(ss) + 1) > 0 && (Number(ss) + 1) < 60) {
     ti();
@@ -82,16 +88,30 @@ let loop = setTimeout(function tick() {
 }, 1000)
 
 function pasteData(data) {
-  let zoneHeader = document.createElement('p');
-  let cityHeader = document.createElement('p');
-  zoneHeader.className = 'choice-timeZone-list-item__name';
-  cityHeader.className = 'choice-timeZone-list-item__name';
-  timeZone.forEach(item => {
-    if (item.showZone === `UTC${data.utc_offset}`) {
-      zoneHeader.append(`UTC${ data.utc_offset }`);
-      cityHeader.append(`${ item.cities.join(' , ') }`);
-      li.append(zoneHeader);
-      li.append(cityHeader);
-    }
-  })
+  if (!iscreateTitleList) {
+    let zoneHeader = document.createElement('p');
+    let cityHeader = document.createElement('p');
+    zoneHeader.className = 'choice-timeZone-list-item__name';
+    cityHeader.className = 'choice-timeZone-list-item__name';
+    timeZone.forEach(item => {
+      if (item.showZone === `UTC${data.utc_offset}`) {
+        zoneHeader.append(`UTC${ data.utc_offset }`);
+        cityHeader.append(`${ item.cities.join(' , ') }`);
+        li.append(zoneHeader);
+        li.append(cityHeader);
+      }
+    })
+    iscreateTitleList = true;
+  } else {
+    console.log(data)
+    let allHeaders = document.querySelectorAll('.choice-timeZone-select>li>p');
+    timeZone.forEach(item => {
+      if (item.showZone === `UTC${data.utc_offset}`) {
+        console.log(item.showZone)
+        console.log(`UTC${data.utc_offset}`)
+        allHeaders[0].innerText = `UTC${ data.utc_offset }`;
+        allHeaders[1].innerText = `${ item.cities.join(' , ') }`;
+      }
+    })
+  }
 }
