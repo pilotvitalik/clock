@@ -9,7 +9,6 @@ let ss; // seconds
 let mm; // minutes
 let hh; // hours
 let data; // common from api
-let counter = 1; // counter for pause setTimeout
 
 // load api
 const requestData = () => {

@@ -1,0 +1,52 @@
+.choice{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	position: fixed;
+	top: 350px;
+	width: 100%;
+	height: auto;
+	.choice-timeZone{
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		width: 400px;
+		height: 40px;
+		margin-right: 10%;
+		overflow: hidden;
+		transition: all 1s ease;
+		background: lightblue;
+		&>ul:first-child{
+			display: block;
+			position: relative;
+			width: 100%;
+			height: 40px;
+			background: green;
+			&>li:first-child{
+				display: inline-block;
+				position: relative;
+				width: 100%;
+				height: 49px;
+				top: -10px;
+				padding-top: 10px;
+				font-size: 17px;
+				line-height: 40px;
+				background: orange;	
+			}
+		}
+		&>ul:last-child{
+			overflow-y: auto;
+		}
+	}
+	.choice-timeZone:hover{
+		height: 200px;
+	}
+	.choice-formatTime{
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		width: 200px;
+		height: 40px;
+		background: blue;
+	}
+}

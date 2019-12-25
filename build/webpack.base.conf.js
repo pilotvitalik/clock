@@ -81,7 +81,9 @@ module.exports = {
         from: `${PATHS.src}/${PATHS.assets}fonts`,
         to: `${PATHS.assets}fonts`
       },
-      { from: `${PATHS.src}/static`, to: '' },
+      { from: `${PATHS.src}/static`,
+        to: `${PATHS.assets}static`
+      },
     ]),
   ],
 }
