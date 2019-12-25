@@ -10,36 +10,89 @@
 		display: flex;
 		flex-direction: column;
 		position: relative;
-		width: 400px;
+		width: 450px;
 		height: 40px;
 		margin-right: 10%;
 		overflow: hidden;
 		transition: all 1s ease;
-		background: lightblue;
+		background: @textColor;
 		&>ul:first-child{
-			display: block;
+			display: flex;
+			flex-flow: row wrap;
 			position: relative;
 			width: 100%;
 			height: 40px;
 			background: green;
 			&>li:first-child{
-				display: inline-block;
+				display: flex;
+				flex-flow: row wrap;
 				position: relative;
-				width: 100%;
-				height: 49px;
-				top: -10px;
-				padding-top: 10px;
-				font-size: 17px;
-				line-height: 40px;
+				width: 395px;
+				height: 40px;
+				padding-left: 25px;
+				font-size: 18px;
+				line-height: 45px;
+				text-align: center;
+				letter-spacing: 0.5px;
 				background: orange;	
+				&>p:first-child{
+					width: 62px;
+					margin-right: 25px;
+				}
+			}
+			button{
+				display: block;
+				position: relative;
+				width: 30px;
+				height: 40px;
+				border: none;
+				outline: none;
+				background: orange;
+				&>span{
+				  display: inline-block;
+				  position: relative;
+				  width: 9.5px;
+				  height: 9.5px;
+				  border: solid blue;
+				  border-width: 0 3px 3px 0;
+				  transform: rotate(44deg);
+				}
+			}
+			button:hover{
+				cursor: pointer;
 			}
 		}
-		&>ul:last-child{
+		&>ul:first-child:hover{
+				cursor: pointer;
+			}
+		.choice-timeZone-list{
 			overflow-y: auto;
+			.choice-timeZone-list-item{
+				display: flex;
+				flex-flow: row nowrap;
+				position: relative;
+				width: 410px;
+				height: 40px;
+				padding-left: 25px;
+				.choice-timeZone-list-item__name{
+					display: inline-block;
+					width: auto;
+					height: 100%;
+					color: grey;
+					font-size: 18px;
+					line-height: 40px;
+					letter-spacing: 0.5px;
+				}
+				&>p:first-child{
+					width: 62px;
+					margin-right: 25px;
+				}
+			}
+			.choice-timeZone-list-item:hover{
+				cursor: pointer;
+				background: lightblue;
+			}
 		}
-	}
-	.choice-timeZone:hover{
-		height: 200px;
 	}
 	.choice-formatTime{
 		display: flex;
@@ -49,4 +102,7 @@
 		height: 40px;
 		background: blue;
 	}
+}
+.height{
+	height: 200px !important;
 }

@@ -1,5 +1,5 @@
 let file = require('../static/cities.json');
-let timeZone = [];
+export let timeZone = [];
 
 const requestTimeZone = () => {
   let tmp = [];
@@ -14,14 +14,18 @@ const requestTimeZone = () => {
   }
   tmp = tmpTime.map(item => {
   	return {
+      id: +item.slice(0, 3),
   		'zone': item,
+      'showZone': `UTC${item}`,
   		'timeZone': `Etc/GMT+${+item.slice(0, 3)}`,
   		'cities': [],
   	}
   })
   timeZone = tmp.map(item => {
   	return {
+      'id': item.id,
   	  'zone': item.zone,
+      'showZone': `UTC${item.zone}`,
   	  'timeZone': item.timeZone.replace('+-','-'),
   	  'cities': item.cities,
   	}
@@ -38,9 +42,19 @@ const addCities = () => {
       }
     })
   })
-  console.log(timeZone);
+  function compareNumeric(a, b) {
+    if (a.id > b.id) return 1;
+    if (a.id == b.id) return 0;
+    if (a.id < b.id) return -1;
+  }
+  timeZone.sort(compareNumeric);
 }
 
 setTimeout(() => {
   addCities();
 }, 1)
+
+
+// setTimeout(() => {
+  
+// },2)

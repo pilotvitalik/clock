@@ -1,4 +1,5 @@
 'use strict'
+import { timeZone } from './requestData.js';
 
 let hours = document.querySelector('.hh'); // show hours
 let minutes = document.querySelector('.mm'); // show minutes
@@ -9,6 +10,9 @@ let ss; // seconds
 let mm; // minutes
 let hh; // hours
 let data; // common from api
+export let ul = document.querySelector('.choice-timeZone-select');
+let li = ul.querySelector('li');
+let changeTime = false;
 
 // load api
 const requestData = () => {
@@ -23,6 +27,12 @@ const requestData = () => {
   request.onload = function() {
     data = request.response;
     time(data);
+    if (changeTime === false) {
+      pasteData(data);
+    } else {
+      return;
+    }
+    changeTime = true;
   }
 }
 
@@ -70,3 +80,18 @@ let loop = setTimeout(function tick() {
   }
   loop = setTimeout(tick, 1000);
 }, 1000)
+
+function pasteData(data) {
+  let zoneHeader = document.createElement('p');
+  let cityHeader = document.createElement('p');
+  zoneHeader.className = 'choice-timeZone-list-item__name';
+  cityHeader.className = 'choice-timeZone-list-item__name';
+  timeZone.forEach(item => {
+    if (item.showZone === `UTC${data.utc_offset}`) {
+      zoneHeader.append(`UTC${ data.utc_offset }`);
+      cityHeader.append(`${ item.cities.join(' , ') }`);
+      li.append(zoneHeader);
+      li.append(cityHeader);
+    }
+  })
+}
