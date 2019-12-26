@@ -24,9 +24,11 @@ let clock = document.querySelector('.clocks'); // common field for displaying di
 export let ss; // seconds
 export let mm; // minutes
 export let hh; // hours
+let phoneWidth; //for width <= 380px
 
 // loading data during initial loading and when changing time zones
 export const requestData = (date) => {
+  phoneWidth = document.documentElement.clientWidth;
   if (requestURL !== date) {
     isChangeTime = true
   }
@@ -137,6 +139,11 @@ let loop = setTimeout(function tick() {
   loop = setTimeout(tick, 1000);
 }, 1000)
 
+// window.addEventListener('resize', () => {
+//   phoneWidth = document.documentElement.clientWidth;
+//   console.log(phoneWidth);
+// });
+
 // inserting a time zone to the field for displaying the current time zone
 function pasteData(data) {
   if (!iscreateTitleList) {
@@ -146,10 +153,18 @@ function pasteData(data) {
     cityHeader.className = 'choice-time-timeZone-list-item__name';
     timeZone.forEach(item => {
       if (item.showZone === `UTC${data.utc_offset}`) {
-        zoneHeader.append(`UTC${ data.utc_offset }`);
-        cityHeader.append(`${ item.cities.join(' , ') }`);
-        li.append(zoneHeader);
-        li.append(cityHeader);
+        if (item.cities.length >= 3 && phoneWidth < 380) {
+          item.cities.pop();
+          zoneHeader.append(`UTC${ data.utc_offset }`);
+          cityHeader.append(`${ item.cities.join(' , ') }`);
+          li.append(zoneHeader);
+          li.append(cityHeader);
+        } else {
+          zoneHeader.append(`UTC${ data.utc_offset }`);
+          cityHeader.append(`${ item.cities.join(' , ') }`);
+          li.append(zoneHeader);
+          li.append(cityHeader);
+        }
       }
     })
     iscreateTitleList = true;
@@ -157,8 +172,14 @@ function pasteData(data) {
     let allHeaders = document.querySelectorAll('.choice-time-timeZone-select>li>p');
     timeZone.forEach(item => {
       if (item.showZone === `UTC${data.utc_offset}`) {
-        allHeaders[0].innerText = `UTC${ data.utc_offset }`;
-        allHeaders[1].innerText = `${ item.cities.join(' , ') }`;
+        if (item.cities.length >= 3 && phoneWidth < 380) {
+          item.cities.pop();
+          allHeaders[0].innerText = `UTC${ data.utc_offset }`;
+          allHeaders[1].innerText = `${ item.cities.join(' , ') }`;
+        } else {
+          allHeaders[0].innerText = `UTC${ data.utc_offset }`;
+          allHeaders[1].innerText = `${ item.cities.join(' , ') }`;
+        }
       }
     })
   }
