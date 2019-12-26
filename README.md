@@ -40,4 +40,4 @@ npm run build
 * `src/js/index.js` - common file for custom scripts
 * `src/static/` - folder with extra static assets that will be copied into output folder
 
-Copyright (c) 2019-present, [Vitalij KOzhushko](https://github.com/pilotvitalik)
+Copyright (c) 2019-present, [Vitalij Kozhushko](https://github.com/pilotvitalik)
