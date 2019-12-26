@@ -1,7 +1,7 @@
 import { ul, requestData } from './index.js';
 
-let listTime = document.querySelector('.choice-timeZone');
-let subList = document.querySelector('.choice-timeZone-list');
+let listTime = document.querySelector('.choice-time-timeZone');
+let subList = document.querySelector('.choice-time-timeZone-list');
 export let dat = '';
 
 ul.addEventListener('click', (e) => {

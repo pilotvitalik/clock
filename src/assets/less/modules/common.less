@@ -2,18 +2,25 @@ body{
   background: linear-gradient(45deg, @bluePurple, @alizarinRed);
   color: @textColor;
 }
+.clocks{
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 25vh;
+  padding-top: 25vh;
+}
 .clock-box{
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  margin-top: 150px;
   padding: 0 1.5em 3em 1.5em;
   line-height: @lineHeight;
   &>.clock{
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
+    position: relative;
     font-size: @clock;
     .hh,
     .mm,

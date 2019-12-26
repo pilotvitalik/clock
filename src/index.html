@@ -9,37 +9,57 @@
 </head>
 <body>
 <body>
-    <div class='clock-box'>
-      <ul class='clock'>
-        <li class='hh'>
-        </li>
-        <li>
-          :
-        </li>
-        <li class='mm'>
-        </li>
-        <li>
-          :
-        </li>
-        <li class='ss'>
-        </li>
-      </ul>
-      <div class='date'></div>
+    <div class='clocks'>
+      <div class='clock-box'>
+        <ul class='clock'>
+          <li class='hh'>
+          </li>
+          <li>
+            :
+          </li>
+          <li class='mm'>
+          </li>
+          <li>
+            :
+          </li>
+          <li class='ss'>
+          </li>
+          <p class='clock__format display'></p>
+        </ul>
+        <div class='date'></div>
+      </div>
+      <div class='clocks-clock display'>
+        <div class='clocks-clock-hour'>
+          <div class='clocks-clock-hour__hr'></div>
+        </div>
+        <div class='clocks-clock-min'>
+          <div class='clocks-clock-min__mn'></div>
+        </div>
+        <div class='clocks-clock-sec'>
+          <div class='clocks-clock-sec__sc'></div>
+        </div>
+      </div>
     </div>
     <div class='choice'>
-      <div class='choice-timeZone'>
-        <ul class='choice-timeZone-select'>
-          <li>
-          </li>
-          <button>
-            <span>
-            </span>
-          </button>
-        </ul>
-        <ul class='choice-timeZone-list'>
-        </ul>
+      <div class='choice-time'>
+        <div class='choice-time-timeZone'>
+          <ul class='choice-time-timeZone-select'>
+            <li>
+            </li>
+            <button>
+              <span>
+              </span>
+            </button>
+          </ul>
+          <ul class='choice-time-timeZone-list'>
+          </ul>
+        </div>
+        <div class='choice-time-formatTime'>
+          <input type='checkbox' name='changeFormat'>
+        </div>
       </div>
-      <div class='choice-formatTime'>
+      <div class='choice-clock'>
+        <input type='checkbox' name='changeClock'>
       </div>
     </div>
   </body>

@@ -1,6 +1,6 @@
 	import { timeZone } from './requestData.js';
 
-	let list = document.querySelector('.choice-timeZone-list');
+	let list = document.querySelector('.choice-time-timeZone-list');
 
 	function addList() {
 		let fragment = new DocumentFragment();
@@ -8,9 +8,9 @@
 			let li = document.createElement('li');
 			let p = document.createElement('p');
 			let pCity = document.createElement('p');
-			li.className = 'choice-timeZone-list-item';
-			p.className = 'choice-timeZone-list-item__name';
-			pCity.className = 'choice-timeZone-list-item__name';
+			li.className = 'choice-time-timeZone-list-item';
+			p.className = 'choice-time-timeZone-list-item__name';
+			pCity.className = 'choice-time-timeZone-list-item__name';
 			li.setAttribute('value',`${item.timeZone}`);
 			p.setAttribute('value',`${item.timeZone}`);
 			pCity.setAttribute('value',`${item.timeZone}`);

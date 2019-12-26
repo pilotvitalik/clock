@@ -45,6 +45,12 @@ module.exports = {
           name: '[name].[ext]'
         }
       }, {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]'
+        }
+      }, {
       test: /\.less$/,
       use: [
         'style-loader',
@@ -77,6 +83,10 @@ module.exports = {
       inject: true
     }),
     new CopyWebpackPlugin([
+      {
+        from: `${PATHS.src}/${PATHS.assets}img`,
+        to: `${PATHS.assets}img`
+      },
       {
         from: `${PATHS.src}/${PATHS.assets}fonts`,
         to: `${PATHS.assets}fonts`

@@ -1,0 +1,75 @@
+.clocks-clock{
+	display: none;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	height: 200px;
+	margin: 0 auto;
+	background: #fff url('../../img/clock.png');
+	background-size: cover;
+	border-radius: 50%;
+	border: 10px solid #fff;
+	box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.1),
+	            0 20px 20px rgba(0, 0, 0, 0.2),
+	            0 0 0 4px rgba(255, 255, 255, 1);
+}
+.clocks-clock:before{
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  z-index: 1000;
+  background: #848484;
+}
+.clocks-clock-hour,
+.clocks-clock-min,
+.clocks-clock-sec{
+	position: absolute;
+}
+.clocks-clock-hour, .clocks-clock-hour__hr{
+	width: 160/1.75px; 
+	height: 160/1.75px;
+}
+.clocks-clock-min, .clocks-clock-min__mn{
+	width: 190/1.75px; 
+	height: 190/1.75px;
+}
+.clocks-clock-sec, .clocks-clock-sec__sc{
+	width: 230/1.75px; 
+	height: 230/1.75px;
+}
+.clocks-clock-hour__hr, .clocks-clock-min__mn, .clocks-clock-sec__sc{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  border-radius: 50%;
+}
+.clocks-clock-hour__hr:before{
+	content: '';
+	position: absolute;
+	width: 8px;
+	height: 80/1.75px;
+	background: #848484;
+	z-index: 10;
+	border-radius: 6px 6px 0 0;
+}
+.clocks-clock-min__mn:before{
+	content: '';
+	position: absolute;
+	width: 4px;
+	height: 90/1.75px;
+	background: #d6d6d6;
+	z-index: 11;
+	border-radius: 6px 6px 0 0;
+}
+.clocks-clock-sec__sc:before{
+	content: '';
+	position: absolute;
+	width: 2px;
+	height: 150/1.75px;
+	background: #ff6767;
+	z-index: 12;
+	border-radius: 6px 6px 0 0;
+}

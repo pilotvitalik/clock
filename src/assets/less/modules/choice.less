@@ -1,108 +1,164 @@
 .choice{
 	display: flex;
-	flex-flow: row nowrap;
+	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	position: fixed;
 	top: 350px;
 	width: 100%;
 	height: auto;
-	.choice-timeZone{
+	.choice-time{
 		display: flex;
-		flex-direction: column;
+		flex-flow: row nowrap;
+		justify-content: center;
 		position: relative;
-		width: 450px;
-		height: 40px;
-		margin-right: 10%;
-		overflow: hidden;
-		transition: all 1s ease;
-		background: @textColor;
-		&>ul:first-child{
+		width: 100%;
+		height: auto;
+		.choice-time-timeZone{
 			display: flex;
-			flex-flow: row wrap;
+			flex-direction: column;
 			position: relative;
-			width: 100%;
+			width: 450px;
 			height: 40px;
-			background: green;
-			&>li:first-child{
+			margin-right: 10%;
+			overflow: hidden;
+			transition: all 1s ease;
+			background: @textColor;
+			&>ul:first-child{
 				display: flex;
 				flex-flow: row wrap;
 				position: relative;
-				width: 395px;
+				width: 100%;
 				height: 40px;
-				padding-left: 25px;
-				font-size: 18px;
-				line-height: 45px;
-				text-align: center;
-				letter-spacing: 0.5px;
-				background: orange;	
-				&>p:first-child{
-					width: 62px;
-					margin-right: 25px;
+				&>li:first-child{
+					display: flex;
+					flex-flow: row wrap;
+					position: relative;
+					width: 395px;
+					height: 40px;
+					padding-left: 25px;
+					font-size: 18px;
+					line-height: 45px;
+					text-align: center;
+					letter-spacing: 0.5px;
+					background: orange;	
+					&>p:first-child{
+						width: 62px;
+						margin-right: 25px;
+					}
+				}
+				button{
+					display: block;
+					position: relative;
+					width: 30px;
+					height: 40px;
+					border: none;
+					outline: none;
+					background: orange;
+					&>span{
+					  display: inline-block;
+					  position: relative;
+					  width: 9.5px;
+					  height: 9.5px;
+					  border: solid blue;
+					  border-width: 0 3px 3px 0;
+					  transform: rotate(44deg);
+					}
+				}
+				button:hover{
+					cursor: pointer;
 				}
 			}
-			button{
-				display: block;
-				position: relative;
-				width: 30px;
-				height: 40px;
-				border: none;
-				outline: none;
-				background: orange;
-				&>span{
-				  display: inline-block;
-				  position: relative;
-				  width: 9.5px;
-				  height: 9.5px;
-				  border: solid blue;
-				  border-width: 0 3px 3px 0;
-				  transform: rotate(44deg);
+			&>ul:first-child:hover{
+					cursor: pointer;
 				}
-			}
-			button:hover{
-				cursor: pointer;
+			.choice-time-timeZone-list{
+				overflow-y: auto;
+				.choice-time-timeZone-list-item{
+					display: flex;
+					flex-flow: row nowrap;
+					position: relative;
+					width: 410px;
+					height: 40px;
+					padding-left: 25px;
+					.choice-time-timeZone-list-item__name{
+						display: inline-block;
+						width: auto;
+						height: 100%;
+						color: grey;
+						font-size: 18px;
+						line-height: 40px;
+						letter-spacing: 0.5px;
+					}
+					&>p:first-child{
+						width: 62px;
+						margin-right: 25px;
+					}
+				}
+				.choice-time-timeZone-list-item:hover{
+					cursor: pointer;
+					background: lightblue;
+				}
 			}
 		}
-		&>ul:first-child:hover{
-				cursor: pointer;
-			}
-		.choice-timeZone-list{
-			overflow-y: auto;
-			.choice-timeZone-list-item{
-				display: flex;
-				flex-flow: row nowrap;
-				position: relative;
-				width: 410px;
-				height: 40px;
-				padding-left: 25px;
-				.choice-timeZone-list-item__name{
-					display: inline-block;
-					width: auto;
-					height: 100%;
-					color: grey;
-					font-size: 18px;
-					line-height: 40px;
-					letter-spacing: 0.5px;
-				}
-				&>p:first-child{
-					width: 62px;
-					margin-right: 25px;
-				}
-			}
-			.choice-timeZone-list-item:hover{
-				cursor: pointer;
-				background: lightblue;
-			}
+		.choice-time-formatTime{
+		  display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          width: 80px;
+          height: 50px;
+          margin-top: -5px;
 		}
 	}
-	.choice-formatTime{
-		display: flex;
-		flex-direction: column;
-		position: relative;
-		width: 200px;
-		height: 40px;
-		background: blue;
+	.choice-clock{
+	  display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      width: 80px;
+      height: 50px;
+      top: 100px;
+      z-index: -100;
 	}
 }
 .height{
 	height: 200px !important;
+}
+@media(max-width: 679px) {
+  .choice{
+    width: 100%;
+    .choice-time{
+      flex-wrap: wrap;
+      width: 90%;
+      margin: 0 auto;
+      .choice-time-timeZone{
+        width: 100%;
+        margin-right: 0;
+        &>ul:first-child{
+          width: 100%;
+          &>li:first-child{
+            width: 97%;
+            padding-left: 3%;
+            &>p:first-child{
+              margin-right: 3%;
+            }
+          }
+          button{
+            display: none;
+          }
+        }
+      }
+      .choice-time-formatTime{
+        position: absolute;
+        top: 70px;
+        right: 20%;
+        z-index: -100;
+      }
+    }
+    .choice-clock{
+      top: 65px;
+      left: 20%;
+    }
+  }
 }
