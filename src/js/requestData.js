@@ -1,6 +1,7 @@
 let file = require('../static/cities.json');
-export let timeZone = [];
+export let timeZone = []; // array of time zone list
 
+// creating array timeZone without sorting by cities
 const requestTimeZone = () => {
   let tmp = [];
   let tmpTime = [];
@@ -34,6 +35,7 @@ const requestTimeZone = () => {
 
 requestTimeZone();
 
+// sorting cities
 const addCities = () => {
   file.cities.forEach(item => {
     timeZone.forEach(zone => {

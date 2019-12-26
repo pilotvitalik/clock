@@ -1,9 +1,9 @@
-import * as time from './index.js';
+import * as time from './initialLoad';
 
-const deg = 6;
-const hr = document.querySelector('.clocks-clock-hour__hr');
-const mn = document.querySelector('.clocks-clock-min__mn');
-const sc = document.querySelector('.clocks-clock-sec__sc');
+const deg = 6; // the value of rotation in degrees for 1 second
+const hr = document.querySelector('.clocks-clock-hour__hr'); // clockwise
+const mn = document.querySelector('.clocks-clock-min__mn'); // minute hand
+const sc = document.querySelector('.clocks-clock-sec__sc'); // second hand
 
 let clock = setTimeout(function tick() {
 	let hh = time.hh * 30;

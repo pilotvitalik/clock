@@ -1,9 +1,5 @@
 //JS
-import './js/index';
-import './js/requestData';
-import './js/listTimeZones';
-import './js/receiveOtherDate';
-import './js/analog';
+import './js';
 
 // LESS
 import './assets/less/main.less'
