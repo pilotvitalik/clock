@@ -3,3 +3,4 @@ import './initialLoad';
 import './analog';
 import './listTimeZones';
 import './receiveOtherDate';
+import './browser';

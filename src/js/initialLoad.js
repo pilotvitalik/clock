@@ -8,16 +8,19 @@ let d = document.querySelector('.date'); // show date
 let arrMonths = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
 let data; // common data from api
 let ulFormat = document.querySelector('.clock'); // digital clock display field 
+let clockFormat = document.querySelector('.clock__format'); // field for clock format
 export let ul = document.querySelector('.choice-time-timeZone-select'); // the field for displaying the current time zone in the time zone list
 let li = ul.querySelector('li'); // item in the field for displaying the current time zone
 let isChangeTime = false; // flag for loading a new time zone
 let iscreateTitleList = false; // flag informing about the initial adding info to the displaying the current time zone
 let requestURL = ''; // URL for downloading required information
-let checkFormat = document.querySelector('.choice-time-formatTime>input'); // checkbox for changing the time format
-let checkClock = document.querySelector('.choice-clock>input'); // checkbox for changing the clock type
+let toggle = document.querySelector('.choice-checkbox__toggle'); // checkbox for changing the clock type
+let inner = document.querySelector('.choice-checkbox-inner');
 let isChangeFormat = false; // time format change indicator
 let isChangeClock = false; // clock type change indicator
 let pFormat = document.querySelector('.clock>p'); // "am/pm" input field
+let timeFormat = document.querySelector('.choice-time-checkbox-inner__toggle');
+let timeFormatField = document.querySelector('.choice-time-checkbox-inner');
 let digitalClock = document.querySelector('.clock-box'); // field for displaying digital clock with date
 let analogClock = document.querySelector('.clocks-clock'); // field for displaying analog clock without date
 let clock = document.querySelector('.clocks'); // common field for displaying digital and analog clock
@@ -186,9 +189,11 @@ function pasteData(data) {
 }
 
 // changing the time format display
-checkFormat.addEventListener('click', (e) => {
+timeFormat.addEventListener('click', (e) => {
+  timeFormat.classList.toggle('activeFormat');
+  timeFormatField.classList.toggle('activeInnerFormat');
   pFormat.classList.toggle('display');
-  if(checkFormat.checked) {
+  if(timeFormat.classList.contains('activeFormat')) {
     isChangeFormat = true;
       if (hh < 12) {
         pFormat.innerText = 'AM';
@@ -198,19 +203,35 @@ checkFormat.addEventListener('click', (e) => {
   } else {
     isChangeFormat = false;
   }
+  if (!pFormat.classList.contains('display')) {
+    if (window.innerWidth <= 379) {
+      ulFormat.style.paddingRight = '70px';
+      clockFormat.style.right = 0;
+    }
+  } else {
+    if (window.innerWidth <= 379) {
+      ulFormat.style.paddingRight = 0;
+    }
+  }
 })
 
 // changing the display of the clock type
-checkClock.addEventListener('click', (e) => {
-  if(checkClock.checked) {
-    isChangeClock = true;
-    digitalClock.classList.toggle('display');
-    analogClock.style.display = 'flex';
-    clock.style.paddingTop = '80px';
+toggle.addEventListener('click', (e) => {
+  toggle.classList.toggle('active');
+  inner.classList.toggle('activeInner');
+  if(toggle.classList.contains('active')) {
+    setTimeout(() => {
+      isChangeClock = true;
+      digitalClock.classList.toggle('display');
+      analogClock.style.display = 'flex';
+      clock.style.paddingTop = '80px';
+    }, 200)
   } else {
-    isChangeClock = false;
-    digitalClock.classList.toggle('display');
-    analogClock.style.display = 'none';
-    clock.style.paddingTop = '127px';
+    setTimeout(() => {
+      isChangeClock = false;
+      digitalClock.classList.toggle('display');
+      analogClock.style.display = 'none';
+      clock.style.paddingTop = '127px';
+    }, 200)
   }
 })

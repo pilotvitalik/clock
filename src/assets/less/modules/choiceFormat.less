@@ -1,41 +1,62 @@
-.choice-time-formatTime{
-  input[type='checkbox']{
-    position: relative;
-    width: 80px;
-    height: 40px;
-    appearance: none;
-    background: #c6c6c6;
-    border-radius: 20px;
-    box-shadow: inset 0 0 5px rgba(0,0,0,.5); 
-    outline: none;
-    transition: .5s;
-  }
-  input:checked[type='checkbox']{
-    background: #03a9f4;
-  }
-  input[type='checkbox']:before{
-    content: '24H';
+.choice-time-checkbox{
+  position: relative;
+  width: 100px;
+  height: 40px;
+  border-radius: 25px;
+  border-top: 0.02em solid #ececec;
+  border-bottom: 0.02em solid #ececec;
+  background: linear-gradient(0deg, #d8d8d8, #ccc);
+  box-sizing: border-box;
+  .choice-time-checkbox-inner{
     position: absolute;
-    width: 30px;
-    height: 29px;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
     border-radius: 20px;
-    padding-top: 11px;
-    padding-left: 10px;
-    top: 0;
-    left: 0;
-    font-size: 15px;
-    transform: scale(1.1);
-    transition: .5s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    background: @textColor;
+    background: linear-gradient(0deg, #a5a5a5, #717171);
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+    .choice-time-checkbox-inner__toggle{
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: linear-gradient(0deg, #ccc, #e4e4e4);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      border-top: 0.04em solid #ececec;
+      border-bottom: 0.01em solid #ececec;
+      transition: 0.5s;
+    }
+    .choice-time-checkbox-inner__toggle:before{
+      content: '24 h';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      right: 4px;
+      bottom: 4px;
+      border-radius: 50%;
+      background: linear-gradient(0deg, #e4e4e4, #ccc);
+      text-align: center;
+      font-size: 17px;
+      line-height: 37px;
+      text-transform: uppercase;
+      color: #000;
+    } 
+    .choice-time-checkbox-inner__toggle:hover{
+      cursor: pointer;
+    }
+    .activeFormat{
+      left: 56px;
+    } 
   }
-  input:checked[type='checkbox']:before{
-    content: 'am/pm';
-    text-transform: uppercase;
-    width: 36px;
-    padding-left: 4px;
-    left: 40px;
-  }
+  .activeInnerFormat{
+    background: #03a9f4;
+    .choice-time-checkbox-inner__toggle:before{
+      content: 'AM/PM';
+    }
+  } 
 }
 .clock__format{
   display: inline-block;
@@ -43,8 +64,25 @@
   width: 70px;
   height: 100%;
   text-align: center;
-  right: -100px;
+  right: -70px;
 }
 .display{
   display: none;
+}
+@media (max-width: 679px) {
+  .choice-time-checkbox{
+    position: absolute;
+    top: 70px;
+    right: 20%;
+    z-index: -1;
+  }
+}
+@media (max-width: 479px) {
+  .choice-time-checkbox{
+    right: 5%;
+  }
+  .clock__format{
+    text-transform: lowercase;
+    right: -70px;
+  }
 }
