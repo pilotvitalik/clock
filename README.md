@@ -1,10 +1,10 @@
-<div align="center">
-  <img width="200" height="200" src="https://webpack.js.org/assets/icon-square-big.svg">
+<div style="display: flex; flex-direction: column; align-items: center">
+  <img width="200" height="200" src="https://webpack.js.org/assets/icon-square-big.svg" alt="webpack">
   <h1>Sync clock via api</h1>
   <p>
     This page created with api (http://worldtimeapi.org/) and webpack
   </p>
-  <p>Author: <a href="http://portfoliovitalij.ru/" target="_blank">To portfolio</a>
+  <p>Author: <a href="https://portfolio-vitaliy.ru/" target="_blank">To portfolio</a>
 </div>
 
 
